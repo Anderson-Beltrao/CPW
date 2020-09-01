@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+<head>
+    <title>
+    	Compras
+    </title>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Stoke">    
+<link rel="stylesheet" type="text/css" href="../FolhasDeEstilo.css">  
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
+<meta charset="utf-8">
+<script type="text/javascript">
+function CriticaDeCampo(c) { 
+    var apos; 
+    var cEmail = c.value; 
+    var arroba = cEmail.indexOf("@"); 
+
+    if ( arroba == -1 ) { 
+        alert("Email tem que ter um caractere '@' !");
+        return false; 
+    } 
+    apos = arroba + 1; 
+    if ( cEmail.indexOf("@", apos) != -1 ) {
+        alert("Email só pode ter um caractere '@' !");
+        return false; 
+    } 
+    apos = cEmail.indexOf(".", apos);
+    if ( apos == -1 ) { 
+        alert("Email tem ter pelo menos um caractere '.' após @ !");    
+        return false; 
+    } 
+    if ( apos == (arroba + 1) || (apos + 1) == cEmail.length ) {  
+        alert("O '.' não pode estar imediatamente " + "após o '@' nem no fim do email !");        
+        return false; 
+    }  
+    return true;    
+} 
+
+var listaPreco = new Array();
+listaPreco = [ 0, 370, 360, 500, 190, 300, 200, 620, 800 ];
+
+function ListaCompra(lc) {
+    var vn;
+    var ps = lc.selectedIndex;
+    var total = (lc.form.TValor.value > 0) ?
+    parseFloat(lc.form.TValor.value) : 0;
+    vn = lc.options[ps].value;
+
+    if ( vn != "0" ) {
+    lc.form.Selecionados.value += lc.options[ps].text + "\n";
+    lc.form.TValor.value = total + listaPreco[vn];
+    lc.selectedIndex = 0;
+    }
+}
+</script>
+</head>
+<body>
+	<header>
+	    <img class="imgLogo" src="../imagens/TouroSentadoLogoPq.png">
+	    <address class="ender">
+            Av. Cabeza de Vaca, 1559<br>
+		    Cell: (21) 98765-4321<br>
+		    <a href="mailto:contato@tsent.com.br">contato@tsent.com.br</a>
+	    </address>
+	</header>
+	<nav>		
+		<ul>
+            <li><a href="TouroSentado2.html" target="_blank">Apresenta&ccedil;&atilde;o</a></li>
+            <li><a href="Mesas.html" target="_blank">Mesas</a></li>
+            <li><a href="Cadeiras.html" target="_blank">Cadeiras</a></li>
+            <li><a href="Compras.html" target="_blank">Compras</a></li>                        
+        </ul>                         	
+	</nav>	
+	<section> 
+		<form method="post" action="mailto:contato@tsent.com.br">
+			<fieldset class="fsForm">
+				<legend>
+					Dados de identifica&ccedil;&atilde;o
+				</legend>
+		            <br>
+		            <label class="label1" for="nome">Nome:</label>
+		            <input class="input1" type="text" name="Nome" id="nome">
+		            <label class="label2" for="cpf">Cpf:</label>
+		            <input class="input2" type="text" name="Cpf" id="cpf">
+		            <br><br>		            		            
+		            <label class="label1" for="telefone">Telefone:</label>
+		            <input class="input2" type="tel" name="Telefone" id="telefone">
+		            <label class="label2" for="e-mail">E-mail:</label>		            
+		            <input class="input1" type="email" name="E-mail" id="e-mail" onChange="CriticaDeCampo(this)">
+		            <br><br>		            
+		            <label class="label1" for="endereco">Endere&ccedil;o:</label>
+		            <input class="input3" type="text" name="Endereco" id="endereco">
+		    </fieldset>		    
+		    <fieldset class="fsResEsq"> 		      
+		        <legend>
+		        Produtos
+		        </legend> 
+		            <br>
+		            Mesas:
+		            <select name="Mesas" class="fr" onChange="ListaCompra(this);">
+		    	            <option value="0" selected>---</option>
+		    	        <optgroup label="Diretor">
+		    		        <option value="1">Alfamob Sigma</option>
+		    		        <option value="2">Alfa Painel S40M136</option>
+		    	        </optgroup>
+		    	        <optgroup label="Reuni&atilde;o">
+		    	            <option value="3">Alfamob Corp. semi-oval</option>
+		    	        </optgroup>    
+		            </select>
+		    	    <p>Cadeiras:
+		    	    <select name="Cadeiras" class="fr" onChange="ListaCompra(this);">
+		    		        <option value="0" selected>---</option>
+		    		    <optgroup label="Secret&aacute;ria">
+		    			    <option value="4">Veneza 658 Fixa Couro</option>
+		    			    <option value="5">Turim Gir. Couro</option>
+		    			    <option value="6">Matriz Exp. Gir. Tecido</option>
+		    		    </optgroup>		    	
+		    		    <optgroup label="Presidente">
+		    			    <option value="7">Firenze 560 Couro</option>
+		    			    <option value="8">Ipanema Prime Couro</option>		    			
+		    		    </optgroup>
+		    	    </select>	
+		        </p>
+		        <p>Selecionados: <input class="fr" type="button" value="comprar" name="Comprar"></p> 
+
+		        <textarea name="Selecionados" readonly></textarea>
+
+		        <br><br>
+		            <label for="valor">Valor:</label>
+		            <input class="input4" type="text" name="TValor" id="valor" readonly> 
+		    </fieldset>		    
+		    <fieldset class="fsResDir">		    
+		    	<legend>
+		    	Forma de Pagamento
+		        </legend>
+		    	    <input type="radio" name="Pagamento" value="Visa" checked> Cart&atilde;o Visa
+		    	    <br>
+		    	    <input type="radio" name="Pagamento" value="Mastercard"> Cart&atilde;o Mastercard
+		    	    <br>
+		    	    <input type="radio" name="Pagamento" value="Boleto"> Boleto Banc&aacute;rio
+		    	<p class="parcelas">Parcelas sem juros:
+		    	<select name="Parcelas" class="fr">
+		    		<option value="1.0">1</option>
+		    		<option value="2.0">2</option>
+		    		<option value="3.0">3</option>
+		    		<option value="4.0">4</option>
+		    	</select> 
+		    	</p>   
+		    <fieldset class="fsCartao">
+		    	<legend>
+		    		Dados do Cart&atilde;o
+		    	</legend>
+		    	    <label class="label1" for="numero">Numero:</label>
+		    	    <input class="input5" type="text" name="Numero" id="numero">
+		    	    <br>
+		    	    <label class="label1" for="validade">Validade:</label>
+		    	    <input class="input6" type="text" name="Mes" id="validade"> / <input class="input7" type="text" name="Ano" id="validade">		    	
+		    </fieldset>	
+		    </fieldset>
+		            		           
+		            <p class="enviarLimpar">
+		            <input  type="submit" value="Enviar" name="enviar">
+		            <input  type="reset" value="Limpar" name="limpar"> 
+		            </p>
+		</form>
+	</section>
+</body>
+</html>
+		            

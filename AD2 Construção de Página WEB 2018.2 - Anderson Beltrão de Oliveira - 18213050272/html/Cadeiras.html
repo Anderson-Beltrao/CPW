@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+    <title>
+    	Cadeiras
+    </title>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Stoke">    
+<link rel="stylesheet" type="text/css" href="../FolhasDeEstilo.css">  
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
+<script type="text/javascript">
+	var tabelaCadeira = [
+	    ["&nbsp;", "Vazio", 0],
+	    ["Veneza", "SecretariaFixaVeneza658Couro", 190],
+	    ["Turim", "SecretariaGiratoriaTurimCouro", 300],
+	    ["Matriz Export", "SecretariaGiratoriaMatrizExport", 200],
+	    ["Firenze", "PresidenteFirenze560CouroEcologico", 620],
+	    ["Ipanema Prime", "PresidenteIpanemaPrimeCouro", 800], ];
+
+	function Exibir(e) {
+	    var nom = document.getElementById("nomeCadeira");
+	    var imagem = document.getElementById("imgCadeira");
+	    var preco = document.getElementById("precoCadeira");
+	    nom.innerHTML = tabelaCadeira[e][0];
+	    imagem.src = "../imagens/" + tabelaCadeira[e][1] + ".jpg";
+	    preco.innerHTML = "R$ " + tabelaCadeira[e][2] + ",00";
+}
+</script>
+</head>
+<body>
+	<header>
+	    <img class="imgLogo" src="../imagens/TouroSentadoLogoPq.png">
+	    <address class="ender">
+            Av. Cabeza de Vaca, 1559<br>
+		    Cell: (21) 98765-4321<br>
+		    <a href="mailto:contato@tsent.com.br">contato@tsent.com.br</a>
+	    </address>
+	</header>
+	<nav>		
+		<ul>
+            <li><a href="TouroSentado2.html" target="_blank">Apresenta&ccedil;&atilde;o</a></li>
+            <li><a href="Mesas.html" target="_blank">Mesas</a></li>
+            <li><a href="Cadeiras.html" target="_blank">Cadeiras</a></li>
+            <li><a href="Compras.html" target="_blank">Compras</a></li>                        
+        </ul>                         	
+	</nav>	
+	<section>
+		<table class="tabCadeira"> 
+            <tr>
+            	<th colspan="3" class="titulo">
+            	    Cadeiras
+                </th>
+            </tr> 
+            <tr>
+            	<th class="linTH">Tipo</th> 
+                <th class="linTH">Modelo</th> 
+                <th class="linTH" id="nomeCadeira"></th>
+            </tr> 
+            <tr>
+            	<th rowspan="3" class="colTH"> 
+                    Secret&aacute;ria
+                </th> 
+                <td><a target="_self" href="javascript:Exibir(1);">Veneza 658 Fixa Couro Ecol&oacute;gico</a></td>     
+                <th rowspan="5">
+           	        <img id="imgCadeira" src="../imagens/vazio.jpg"/> 
+                    <div id="precoCadeira" class="precoCadeiras">&nbsp;</div>
+                </th>
+            </tr> 
+            <tr>
+            	<td><a target="_self" href="javascript:Exibir(2);">Turim Girat&oacute;ria Couro Ecol&oacute;gico</a></td>
+            </tr> 
+            <tr>
+            	<td><a target="_self" href="javascript:Exibir(3);">Matriz Export Girat&oacute;ria Tecido</a></td>
+            </tr> 
+            <tr>
+            	<th rowspan="2" class="colTH"> 
+                    Presidente
+                </th> 
+                <td><a target="_self" href="javascript:Exibir(4);">Firenze 560 Couro Ecol&oacute;gico</a></td>
+            </tr> 
+            <tr>
+            	<td><a target="_self" href="javascript:Exibir(5);">Ipanema Prime Couro Ecol&oacute;gico</a></td>
+            </tr> 
+        </table> 
+    </section> 
+</body>
+</html>			        
+
+
+			
+
+
